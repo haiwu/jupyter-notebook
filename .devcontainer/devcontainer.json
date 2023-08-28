@@ -4,7 +4,20 @@
 	"name": "Python 3",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
-
+	"runArgs": ["--userns=keep-id"],
+        "remoteUser": "${localEnv:USER}",
+        "customizations": {
+	  // Configure properties specific to VS Code.
+	  "vscode": {
+	    // Set *default* container specific settings.json values on container create.
+	      "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": { "bash": { "path": "/bin/bash" } }
+              },
+	      "extensions": []
+	  }
+        },
+	
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	
