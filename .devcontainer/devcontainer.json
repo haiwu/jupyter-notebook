@@ -23,7 +23,7 @@
 	  "HOME": "${env:HOME}"
 	},
 	//"runArgs": ["--userns=keep-id"],
-        //"remoteUser": "${localEnv:USER}",
+        "remoteUser": "${localEnv:USER}",
         "customizations": {
 	  // Configure properties specific to VS Code.
 	  "vscode": {
