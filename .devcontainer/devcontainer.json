@@ -28,5 +28,7 @@
 	// "postCreateCommand": "pip3 install -r requirements.txt"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "hai"
+	"remoteUser": "vscode",
+        "containerUser": "vscode",
+        "updateRemoteUserUID": true
 }
