@@ -4,8 +4,8 @@
 	"name": "Python 3",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
-	"workspaceMount": "",
-	"workspaceFolder": "${localWorkspaceFolder}",
+	//"workspaceMount": "",
+	//"workspaceFolder": "${localWorkspaceFolder}",
 	"runArgs": [
 	    // run container as current user
 	    "--userns=keep-id",
