@@ -4,8 +4,26 @@
 	"name": "Python 3",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
-	"runArgs": ["--userns=keep-id"],
-        "remoteUser": "${localEnv:USER}",
+	"workspaceMount": "",
+	"workspaceFolder": "${localWorkspaceFolder}",
+	"runArgs": [
+	    // run container as current user
+	    "--userns=keep-id",
+	    // disable selinux isolation that breaks bind mounts
+	    "--security-opt=label=disable",
+	    // mount user home directory for things like git, ssh, and other configs
+	    "--volume=${env:HOME}:${env:HOME}",
+	    // ensure project directory is mounted incase it exists outside the home directory
+	    "--volume=${localWorkspaceFolder}:${localWorkspaceFolder}",
+	    // isolate the .vscode-server folder so you don't overwrite settings from remote ssh vscode
+	    "--volume=${localWorkspaceFolder}/.cache/vscode-server:${env:HOME}/.vscode-server"
+	],
+	"containerEnv": {
+	  // ensure users home directory is the same inside the container as it is outside
+	  "HOME": "${env:HOME}"
+	},
+	//"runArgs": ["--userns=keep-id"],
+        //"remoteUser": "${localEnv:USER}",
         "customizations": {
 	  // Configure properties specific to VS Code.
 	  "vscode": {
@@ -16,7 +34,7 @@
               },
 	      "extensions": []
 	  }
-        },
+        }
 	
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -28,10 +46,5 @@
 	// "postCreateCommand": "pip3 install -r requirements.txt"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	//"remoteUser": "vscode",
-        //"containerUser": "vscode",
-        //"updateRemoteUserUID": true,
-	//"containerEnv": {
-        //  "HOME": "/home/vscode"
-        //}
+	//"remoteUser": "vscode"
 }
