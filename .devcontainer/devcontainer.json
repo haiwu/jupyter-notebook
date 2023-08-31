@@ -6,22 +6,22 @@
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
 	//"workspaceMount": "",
 	//"workspaceFolder": "${localWorkspaceFolder}",
-	"runArgs": [
+	//"runArgs": [
 	    // run container as current user
-	    "--userns=keep-id",
+	    //"--userns=keep-id",
 	    // disable selinux isolation that breaks bind mounts
 	    //"--security-opt=label=disable",
 	    // mount user home directory for things like git, ssh, and other configs
-	    "--volume=${env:HOME}:${env:HOME}"
+	    //"--volume=${env:HOME}:${env:HOME}"
 	    // ensure project directory is mounted incase it exists outside the home directory
 	    //"--volume=${localWorkspaceFolder}:${localWorkspaceFolder}",
 	    // isolate the .vscode-server folder so you don't overwrite settings from remote ssh vscode
 	    //"--volume=${localWorkspaceFolder}/.cache/vscode-server:${env:HOME}/.vscode-server"
-	],
-	"containerEnv": {
+	//],
+	//"containerEnv": {
 	  // ensure users home directory is the same inside the container as it is outside
-	  "HOME": "${env:HOME}"
-	},
+	  //"HOME": "${env:HOME}"
+	//},
 	//"runArgs": ["--userns=keep-id"],
         //"remoteUser": "${localEnv:USER}",
         "customizations": {
@@ -46,5 +46,5 @@
 	// "postCreateCommand": "pip3 install -r requirements.txt"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "vscode"
+	"remoteUser": "root"
 }
